@@ -1,0 +1,10 @@
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include "game_manager.h"
+using namespace std;
+
+int main()
+{
+    game_manager game;
+game.run();
+}
