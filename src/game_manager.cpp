@@ -1,6 +1,6 @@
 #include "game_manager.h"
 #include <SFML/Graphics.hpp>
-game_manager::game_manager()
+game_manager::game_manager() : p1(5,100.0f)
 {
 pencere.create(sf::VideoMode(1280,720),"Shooter Game");
 }
@@ -17,7 +17,9 @@ void game_manager::run()
                 pencere.close();
             }
         }
-         pencere.clear(sf::Color::Black);
+         pencere.clear(sf::Color::Blue);
+          p1.draw(pencere);
+         pencere.display();
 
     }
 }

@@ -427,10 +427,18 @@
 
 1777654752 c:\users\kayra dönmez\desktop\programlama proje oyun\include\screen.h
 
-1777657530 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
+1777662993 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 
-1777658112 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
+1777662836 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
+	<SFML/Graphics.hpp>
+	"player.h"
+
+1777661634 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
+	<SFML/Graphics.hpp>
+
+1777663035 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+	"player.h"
 	<SFML/Graphics.hpp>
 
