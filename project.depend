@@ -427,18 +427,26 @@
 
 1777654752 c:\users\kayra dönmez\desktop\programlama proje oyun\include\screen.h
 
-1777892740 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
+1778345668 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 
-1777662836 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
+1778160074 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
 	<SFML/Graphics.hpp>
 	"player.h"
+	"bullet.h"
 
-1777892747 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
+1778338589 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
-1777889903 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+1778338589 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
 	"player.h"
 	<SFML/Graphics.hpp>
+
+1778346447 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
+	<SFML/Graphics.hpp>
+
+1778345770 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\bullet.cpp
+	"bullet.h"
+	<math.h>
 

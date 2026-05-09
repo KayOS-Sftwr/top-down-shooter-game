@@ -2,6 +2,7 @@
 #define GAME_MANAGER_H
 #include <SFML/Graphics.hpp>
 #include "player.h"
+#include "bullet.h"
 using namespace std;
 class game_manager
 {
@@ -12,6 +13,7 @@ class game_manager
     private:
     sf::RenderWindow pencere;
     player p1;
+    bullet b1;
 
 };
 

@@ -34,3 +34,14 @@ sf::Vector2f konum = sekil.getPosition();
     sekil.move(0,speed);
 if (konum.y > 720.0f) sekil.setPosition(konum.x, 0.0f);
     }
+
+    int player::getPosition_x()
+    {
+        sf::Vector2f konum= sekil.getPosition();
+        return konum.x;
+    }
+      int player::getPosition_y()
+    {
+        sf::Vector2f konum= sekil.getPosition();
+        return konum.y;
+    }

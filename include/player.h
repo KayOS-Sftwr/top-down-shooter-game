@@ -11,6 +11,8 @@ class player
         void changePosition_xleft();
         void changePosition_yup();
         void changePosition_ydown();
+        int getPosition_x();
+        int getPosition_y();
     private:
         int health;
         float speed;
