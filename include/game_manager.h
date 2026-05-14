@@ -13,7 +13,7 @@ class game_manager
     private:
     sf::RenderWindow pencere;
     player p1;
-    bullet b1;
+    vector<bullet> bullets;
 
 };
 

@@ -431,7 +431,7 @@
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 
-1778160074 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
+1778755862 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
 	<SFML/Graphics.hpp>
 	"player.h"
 	"bullet.h"
@@ -443,10 +443,10 @@
 	"player.h"
 	<SFML/Graphics.hpp>
 
-1778346447 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
+1778757305 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
 	<SFML/Graphics.hpp>
 
-1778345770 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\bullet.cpp
+1778757208 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\bullet.cpp
 	"bullet.h"
 	<math.h>
 
