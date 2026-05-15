@@ -12,6 +12,8 @@ class bullet
         void mermi_hareket();
         int ekrandanciktimi();
         int temizle();
+        int getPosition_x();
+        int getPosition_y();
     private:
         float speed=10.0f;
         int damage=50;

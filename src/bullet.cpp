@@ -35,3 +35,13 @@ int bullet::temizle()
     else
         return false;
 }
+int bullet::getPosition_x()
+{
+    sf::Vector2f konum=mermi_sekil.getPosition();
+    return konum.x;
+}
+int bullet::getPosition_y()
+{
+    sf::Vector2f konum=mermi_sekil.getPosition();
+    return konum.y;
+}
