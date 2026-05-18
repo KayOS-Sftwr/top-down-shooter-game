@@ -13,6 +13,10 @@ class player
         void changePosition_ydown();
         int getPosition_x();
         int getPosition_y();
+        void can_azalt();
+        int can_yok();
+        void can_sifirla();
+        sf::FloatRect getGlobalbounds();
     private:
         int health;
         float speed;

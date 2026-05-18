@@ -1,15 +1,22 @@
 #include "game_manager.h"
 #include <SFML/Graphics.hpp>
 #include <time.h>
-game_manager::game_manager() : p1(100,5.0f)
+#include <stdlib.h>
+#include <math.h>
+game_manager::game_manager() : p1(100,12.0f)
 {
 pencere.create(sf::VideoMode(1280,720),"Shooter Game");
-pencere.setFramerateLimit(165);
+pencere.setFramerateLimit(60);
 }
 
 void game_manager::run()
 {
     //added necessery variable
+    start:
+    int skor=0;
+    p1.can_sifirla();
+    enemies.clear();
+    bullets.clear();
     sf::Clock mola;
     int dalga_sayisi=0;
     int enemy_miktar=10;
@@ -20,23 +27,59 @@ void game_manager::run()
     player_konum_initial.x=p1.getPosition_x();
     player_konum_initial.y=p1.getPosition_y();
     int counter=1;
+    oyun_bitti=false;
+    oyun_basladi=false;
     while(pencere.isOpen()){
+            if(oyun_basladi==false){
+                  sf::Event olay;
+        while(pencere.pollEvent(olay))
+        {
+            printf(".");
+                  if (olay.type == sf::Event::KeyPressed) {
+        if (olay.key.code == sf::Keyboard::R) {
+           oyun_basladi=true;
+        }
+                  }
+                 if (olay.type == sf::Event::KeyPressed) {
+        if (olay.key.code == sf::Keyboard::Escape) {
+           exit(0);
+        }
+                 }
+            if(olay.type==sf::Event::Closed)
+            {
+                pencere.close();
+            }
+        }
+        sf::Font benim_fontum;
+        if (!benim_fontum.loadFromFile("ROG Fonts STRIX SCAR Regular.ttf"))
+{
+}
+        sf::Text welcome;
+        sf::Text made;
+        welcome.setFont(benim_fontum);
+        welcome.setString("Welcome to the Shooter Game!!");
+        welcome.setCharacterSize(45);
+        welcome.setStyle(sf::Text::Bold);
+        welcome.setFillColor(sf::Color::White);
+        welcome.setPosition(125.f, 300.f);
+        made.setFont(benim_fontum);
+        made.setString("Made By Kayra Donmez\n press R to start ESC to exit...");
+        made.setCharacterSize(20);
+        made.setStyle(sf::Text::Italic);
+        made.setFillColor(sf::Color::White);
+        made.setPosition(125.f, 400.f);
+        pencere.clear(sf::Color::Black);
+        pencere.draw(welcome);
+        pencere.draw(made);
+        pencere.display();
+
+                                    }
+    else{
+    if(oyun_bitti==false){
         sf::Event olay;
         while(pencere.pollEvent(olay))
         {
             printf(".");
-           if (olay.type == sf::Event::MouseButtonPressed) {
-        if (olay.mouseButton.button == sf::Mouse::Left) {
-//        player_konum.x=p1.getPosition_x();
-//        player_konum.y=p1.getPosition_y();
-//        mouse_position=sf::Mouse::getPosition(pencere);
-//        bullet yeni_mermi;
-//        yeni_mermi.setPosition(player_konum);
-//        yeni_mermi.move_mermi(mouse_position,player_konum);
-//        bullets.push_back(yeni_mermi);
-//        counter++;
-        }
-           }
             if(olay.type==sf::Event::Closed)
             {
                 pencere.close();
@@ -46,8 +89,7 @@ void game_manager::run()
         //enemies must be created once when the wave is over
         if(enemies.size()==0)
         {
-
-            if(counter%825==0)
+            if(counter%300==0)
             {
                 dalga_sayisi++;
              if(dalga_sayisi==1)
@@ -55,7 +97,8 @@ void game_manager::run()
             enemy_miktar=10;
         }else
         {
-            enemy_miktar+=5*dalga_sayisi;
+            enemy_miktar+=2*dalga_sayisi;
+            skor+=10*dalga_sayisi;
         }
         //enemies will come every wall on the screen
              for(int i=0;i<enemy_miktar;i++)
@@ -77,8 +120,8 @@ void game_manager::run()
         player_konum.y=p1.getPosition_y();
             enemies[i].hareket_et(player_konum);
         }
-        //framerate limit set to 165 that means 165 loop per second so counter will increase 165 per second but  while player holding the left button 165/23  7 bullets per second
-        if(counter%23==0){
+        //framerate limit set to 165 that means 60 loop per second so counter will increase 60 per second but  while player holding the left button 60/10  6 bullets per second
+        if(counter%10==0){
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
         player_konum.x=p1.getPosition_x();
@@ -133,12 +176,88 @@ void game_manager::run()
                     if(enemies[i].can_kac())
                     {
                         enemies.erase(enemies.begin()+i);
+                        i--;
+                        skor+=120;
                         break;
                     }
                 }
             }
+            // stack preventer
+for (int i = 0; i < enemies.size(); i++)
+{
+    for (int j = i + 1; j < enemies.size(); j++)
+    {
+
+        if (enemies[i].getGlobalBounds().intersects(enemies[j].getGlobalBounds()))
+        {
+
+            sf::Vector2f posI = enemies[i].getPosition();
+            sf::Vector2f posJ = enemies[j].getPosition();
+            sf::Vector2f itme_yonu = posI - posJ;
+            float mesafe = sqrt(itme_yonu.x * itme_yonu.x + itme_yonu.y * itme_yonu.y);
+            if (mesafe == 0) mesafe = 0.1f;
+            sf::Vector2f normal_itme = itme_yonu / mesafe;
+            float itme_gucu = 1.5f;
+            enemies[i].itil(normal_itme * itme_gucu);
+            enemies[j].itil(-normal_itme * itme_gucu);
+        }
+    }
+}
+              for(int i=0;i<enemies.size();i++){
+            player_konum.x=p1.getPosition_x();
+                player_konum.y=p1.getPosition_y();
+                if(enemies[i].oyuncu_carpti(player_konum))
+                {
+                    if(counter%180==0)
+                    p1.can_azalt();
+                }
+              }
+              for (int i = 0; i < enemies.size(); i++)
+              {
+                   if (enemies[i].getGlobalBounds().intersects(p1.getGlobalbounds())){
+                sf::Vector2f konum;
+                konum.x=p1.getPosition_x();
+                konum.y=p1.getPosition_y();
+
+                  sf::Vector2f posI = enemies[i].getPosition();
+                   sf::Vector2f itme_yonu = posI - konum;
+                    float mesafe = sqrt(itme_yonu.x * itme_yonu.x + itme_yonu.y * itme_yonu.y);
+            if (mesafe == 0) mesafe = 0.1f;
+            sf::Vector2f normal_itme = itme_yonu / mesafe;
+            float itme_gucu = 5.0f;
+            enemies[i].itil(normal_itme * itme_gucu);
+              }
+    }
+
             //clear the previous info and draw new info and print to the screen
-        pencere.clear(sf::Color::Blue);
+        pencere.clear(sf::Color::White);
+        if(enemies.size()==0 && counter%300!=0)
+        {
+                  sf::Font benim_fontum;
+        if (!benim_fontum.loadFromFile("ROG Fonts STRIX SCAR Regular.ttf"))
+{
+}
+             sf::Text dalga;
+        dalga.setFont(benim_fontum);
+        dalga.setString("Wave:"+ std::to_string(dalga_sayisi+1));
+        dalga.setCharacterSize(25);
+        dalga.setStyle(sf::Text::Regular);
+        dalga.setFillColor(sf::Color::Green);
+        dalga.setPosition(325.f, 100.f);
+            pencere.draw(dalga);
+        }
+        sf::Font benim_fontum;
+              if (!benim_fontum.loadFromFile("ROG Fonts STRIX SCAR Regular.ttf"))
+{
+}
+               sf::Text skori;
+        skori.setFont(benim_fontum);
+        skori.setString("Score:"+ std::to_string(skor));
+        skori.setCharacterSize(25);
+        skori.setStyle(sf::Text::Regular);
+        skori.setFillColor(sf::Color::Green);
+        skori.setPosition(1000.0f, 0.0f);
+            pencere.draw(skori);
            p1.draw(pencere);
        for(int i=0;i<bullets.size();i++)
         {
@@ -150,7 +269,60 @@ void game_manager::run()
         }
          pencere.display();
         counter++;
-        if(counter==825)
-            counter=0;
+        if(counter>=300)
+        {
+           counter=0;
+        }
+            if(p1.can_yok())
+              {
+                  oyun_bitti=true;
+              }
+    }
+      else{
+         while(pencere.isOpen()){
+         sf::Event Olay;
+        while(pencere.pollEvent(Olay))
+        {
+            printf(".");
+                if (Olay.type == sf::Event::KeyPressed) {
+        if (Olay.key.code == sf::Keyboard::B) {
+            goto start;
+        }
+           }        if (Olay.type == sf::Event::KeyPressed) {
+        if (Olay.key.code == sf::Keyboard::Escape) {
+            exit(0);
+        }
+           }
+            if(Olay.type==sf::Event::Closed)
+            {
+                pencere.close();
+            }
+        }
+        sf::Font benim_fontum;
+        sf::Text game_over_yazisi;
+        sf::Text tekrar_mi;
+        if (!benim_fontum.loadFromFile("ROG Fonts STRIX SCAR Regular.ttf"))
+{
+}
+game_over_yazisi.setFont(benim_fontum);
+tekrar_mi.setFont(benim_fontum);
+tekrar_mi.setString("Play again?\n Press ESC to exit Press B to play again...");
+tekrar_mi.setCharacterSize(30);
+tekrar_mi.setStyle(sf::Text::Italic);
+tekrar_mi.setFillColor(sf::Color::Black);
+tekrar_mi.setPosition(325.f, 400.f);
+        game_over_yazisi.setString("GAME OVER");
+game_over_yazisi.setCharacterSize(75);
+game_over_yazisi.setFillColor(sf::Color::Black);
+game_over_yazisi.setStyle(sf::Text::Bold);
+game_over_yazisi.setPosition(325.f, 300.f);
+        pencere.clear(sf::Color::Red);
+        pencere.draw(game_over_yazisi);
+        pencere.draw(tekrar_mi);
+        pencere.display();
+
+                }
+            }
+        }
     }
 }

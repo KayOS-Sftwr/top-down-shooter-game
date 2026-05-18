@@ -3,8 +3,12 @@
 #include <math.h>
 enemy::enemy()
 {
-    enemy_sekil.setFillColor(sf::Color::Black);
-    enemy_sekil.setSize(sf::Vector2f(25.0f,25.0f));
+    enemy_sekil.setSize(sf::Vector2f(50.0f,50.0f));
+    if (!enemy_texture.loadFromFile("zombie.png"))
+    {printf("hata");
+    }
+    enemy_sekil.setTexture(&enemy_texture);
+    enemy_sekil.setFillColor(sf::Color::White);
 }
 
 
@@ -17,8 +21,8 @@ void enemy::mermi_carpti(sf::Vector2f mermi_konum)
 
 int enemy::oyuncu_carpti(sf::Vector2f player_konum)
 {
-     sf::Vector2f konum=enemy_sekil.getPosition();
-         if (player_konum==konum)
+     sf::FloatRect konum=enemy_sekil.getGlobalBounds();
+         if (konum.contains(player_konum))
         return true;
     else
         return false;
@@ -79,8 +83,33 @@ int enemy::mermi_sil(sf::Vector2f mermi_konum)
 
 }
 
-//int enemy::getPosition()
-//{
-//    sf::IntRect konum=enemy_sekil.getGlobalBounds();
-//    return konum;
-//}
+void enemy::itil(sf::Vector2f itme_vektoru)
+{
+    enemy_sekil.move(itme_vektoru);
+}
+
+sf::Vector2f enemy::getPosition()
+{
+    return enemy_sekil.getPosition();
+}
+sf::FloatRect enemy::getGlobalBounds()
+{
+    return enemy_sekil.getGlobalBounds();
+}
+enemy::enemy(const enemy& ornek)
+{
+    this->enemy_texture = ornek.enemy_texture;
+    this->enemy_sekil = ornek.enemy_sekil;
+    this->enemy_sekil.setTexture(&this->enemy_texture);
+}
+enemy& enemy::operator=(const enemy& ornek)
+{
+    if (this != &ornek)
+    {
+        this->enemy_texture = ornek.enemy_texture;
+        this->enemy_sekil = ornek.enemy_sekil;
+        this->enemy_sekil.setTexture(&this->enemy_texture);
+        this->health = ornek.health;
+    }
+    return *this;
+}

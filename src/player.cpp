@@ -45,3 +45,26 @@ if (konum.y > 720.0f) sekil.setPosition(konum.x, 0.0f);
         sf::Vector2f konum= sekil.getPosition();
         return konum.y;
     }
+
+    void player::can_azalt()
+    {
+        health=health-20;
+    }
+
+    int player::can_yok()
+    {
+        if(health<=0)
+            return true;
+        else
+            return false;
+    }
+    void player::can_sifirla()
+    {
+        health=100;
+        sekil.setPosition(600.0f, 300.0f);
+    }
+
+    sf::FloatRect player::getGlobalbounds()
+    {
+        return sekil.getGlobalBounds();
+    }

@@ -10,6 +10,8 @@ class game_manager
     public:
         game_manager();
         void run();
+        bool oyun_bitti= false;
+        bool oyun_basladi=false;
     private:
     sf::RenderWindow pencere;
     player p1;

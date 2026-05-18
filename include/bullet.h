@@ -15,7 +15,7 @@ class bullet
         int getPosition_x();
         int getPosition_y();
     private:
-        float speed=10.0f;
+        float speed=25.0f;
         int damage=50;
         sf::Vector2f yon_vek;
         sf::RectangleShape mermi_sekil;

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1777657593 source:c:\users\kayra dönmez\desktop\programlama proje oyun\main.cpp
+1779109125 source:c:\users\kayra dönmez\desktop\programlama proje oyun\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"game_manager.h"
@@ -427,35 +427,37 @@
 
 1777654752 c:\users\kayra dönmez\desktop\programlama proje oyun\include\screen.h
 
-1778861739 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
+1779127158 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 	<time.h>
+	<stdlib.h>
+	<math.h>
 
-1778848107 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
+1779114248 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
 	<SFML/Graphics.hpp>
 	"player.h"
 	"bullet.h"
 	"enemy.h"
 
-1778338589 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
+1779128643 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
-1778338589 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+1779126405 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
 	"player.h"
 	<SFML/Graphics.hpp>
 
-1778855605 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
+1779113938 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
 	<SFML/Graphics.hpp>
 
 1778855554 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\bullet.cpp
 	"bullet.h"
 	<math.h>
 
-1778859822 c:\users\kayra dönmez\desktop\programlama proje oyun\include\enemy.h
+1779128323 c:\users\kayra dönmez\desktop\programlama proje oyun\include\enemy.h
 	<SFML/Graphics.hpp>
 
-1778859846 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\enemy.cpp
+1779128565 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\enemy.cpp
 	"enemy.h"
 	<time.h>
 	<math.h>
