@@ -4,6 +4,7 @@
 #include "player.h"
 #include "bullet.h"
 #include "enemy.h"
+#include "power_up.h"
 using namespace std;
 class game_manager
 {
@@ -17,6 +18,7 @@ class game_manager
     player p1;
     vector<bullet> bullets;
     vector<enemy> enemies;
+    vector<power_up> powers;
 };
 
 #endif // GAME_MANAGER_H

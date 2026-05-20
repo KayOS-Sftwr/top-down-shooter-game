@@ -2,8 +2,11 @@
 #include <math.h>
 bullet::bullet()
 {
-    mermi_sekil.setSize(sf::Vector2f(20.0f,10.0f));
-    mermi_sekil.setFillColor(sf::Color::Red);
+    if(!mermi_texture.loadFromFile("mermi.png"))
+    {}
+    mermi_sekil.setSize(sf::Vector2f(60.0f,45.0f));
+    mermi_sekil.setFillColor(sf::Color::White);
+    mermi_sekil.setTexture(&mermi_texture);
 }
 
 void bullet::draw_screen(sf::RenderWindow& pencere)
@@ -27,6 +30,16 @@ void bullet::mermi_hareket()
 {
      mermi_sekil.move(yon_vek.x*speed,yon_vek.y*speed);
 }
+void bullet::buraya_bak(sf::Vector2i mouse_konum,sf::Vector2f mermi_konum)
+{
+     sf::Vector2f mouse_konum_f((float)mouse_konum.x, (float)mouse_konum.y);
+     mermi_sekil.setOrigin(30.0f,22.5f);
+    sf::Vector2f fark=mouse_konum_f-mermi_konum;
+    float aci;
+     aci=atan2(fark.y,fark.x)*(180/3.14);
+      mermi_sekil.setRotation(aci);
+
+}
 int bullet::temizle()
 {
     sf::Vector2f konum=mermi_sekil.getPosition();
@@ -44,4 +57,26 @@ int bullet::getPosition_y()
 {
     sf::Vector2f konum=mermi_sekil.getPosition();
     return konum.y;
+}
+bullet::bullet(const bullet& ornek)
+{
+    this->mermi_texture = ornek.mermi_texture;
+    this->mermi_sekil = ornek.mermi_sekil;
+    this->mermi_sekil.setTexture(&this->mermi_texture);
+    this->damage = ornek.damage;
+        this->speed=ornek.speed;
+        this->yon_vek=ornek.yon_vek;
+}
+bullet& bullet::operator=(const bullet& ornek)
+{
+    if (this != &ornek)
+    {
+        this->mermi_texture = ornek.mermi_texture;
+        this->mermi_sekil = ornek.mermi_sekil;
+        this->mermi_sekil.setTexture(&this->mermi_texture);
+        this->damage = ornek.damage;
+        this->speed=ornek.speed;
+        this->yon_vek=ornek.yon_vek;
+    }
+    return *this;
 }

@@ -11,8 +11,11 @@ pencere.setFramerateLimit(60);
 
 void game_manager::run()
 {
+    srand(time(NULL));
     //added necessery variable
     start:
+    sf::Vector2f dusman_konum;
+    int random=10;
     int skor=0;
     p1.can_sifirla();
     enemies.clear();
@@ -78,8 +81,9 @@ void game_manager::run()
     if(oyun_bitti==false){
         sf::Event olay;
         while(pencere.pollEvent(olay))
-        {
-            printf(".");
+            {
+
+                printf(".");
             if(olay.type==sf::Event::Closed)
             {
                 pencere.close();
@@ -94,10 +98,10 @@ void game_manager::run()
                 dalga_sayisi++;
              if(dalga_sayisi==1)
         {
-            enemy_miktar=10;
+            enemy_miktar=5;
         }else
         {
-            enemy_miktar+=2*dalga_sayisi;
+            enemy_miktar+=dalga_sayisi;
             skor+=10*dalga_sayisi;
         }
         //enemies will come every wall on the screen
@@ -124,12 +128,15 @@ void game_manager::run()
         if(counter%10==0){
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-        player_konum.x=p1.getPosition_x();
-        player_konum.y=p1.getPosition_y();
+        player_konum.x=p1.getPosition_x()-25;
+        player_konum.y=p1.getPosition_y()+5;
         mouse_position=sf::Mouse::getPosition(pencere);
         bullet yeni_mermi;
         yeni_mermi.setPosition(player_konum);
+        mermi_konum.x=yeni_mermi.getPosition_x();
+        mermi_konum.y=yeni_mermi.getPosition_y();
         yeni_mermi.move_mermi(mouse_position,player_konum);
+        yeni_mermi.buraya_bak(mouse_position,mermi_konum);
         bullets.push_back(yeni_mermi);
         }
         }
@@ -175,6 +182,20 @@ void game_manager::run()
                     }
                     if(enemies[i].can_kac())
                     {
+                        dusman_konum.x=enemies[i].getposition_x();
+                        dusman_konum.y=enemies[i].getposition_y();
+                         random=rand()%10;
+                         power_up power;
+                        switch(random)
+                        {
+                        case 0:
+                            power.can(dusman_konum);
+                            powers.push_back(power);
+                            if(power.carpti_mi(p1.getGlobalbounds()))
+                            {
+                                p1.can_artir();
+                            }
+                        }
                         enemies.erase(enemies.begin()+i);
                         i--;
                         skor+=120;
@@ -197,7 +218,7 @@ for (int i = 0; i < enemies.size(); i++)
             float mesafe = sqrt(itme_yonu.x * itme_yonu.x + itme_yonu.y * itme_yonu.y);
             if (mesafe == 0) mesafe = 0.1f;
             sf::Vector2f normal_itme = itme_yonu / mesafe;
-            float itme_gucu = 1.5f;
+            float itme_gucu = 0.3f;
             enemies[i].itil(normal_itme * itme_gucu);
             enemies[j].itil(-normal_itme * itme_gucu);
         }
@@ -224,9 +245,15 @@ for (int i = 0; i < enemies.size(); i++)
                     float mesafe = sqrt(itme_yonu.x * itme_yonu.x + itme_yonu.y * itme_yonu.y);
             if (mesafe == 0) mesafe = 0.1f;
             sf::Vector2f normal_itme = itme_yonu / mesafe;
-            float itme_gucu = 5.0f;
+            float itme_gucu = 2.0f;
             enemies[i].itil(normal_itme * itme_gucu);
               }
+    }
+    {
+        player_konum.x=p1.getPosition_x();
+        player_konum.y=p1.getPosition_y();
+        mouse_position=sf::Mouse::getPosition(pencere);
+        p1.karakteri_dondur(mouse_position,player_konum);
     }
 
             //clear the previous info and draw new info and print to the screen
@@ -266,6 +293,10 @@ for (int i = 0; i < enemies.size(); i++)
         for(int i=0;i<enemies.size();i++)
         {
             enemies[i].yazdir(pencere);
+        }
+        for(int i=0;i<powers.size();i++)
+        {
+            powers[i].yazdir(pencere);
         }
          pencere.display();
         counter++;

@@ -17,10 +17,15 @@ class player
         int can_yok();
         void can_sifirla();
         sf::FloatRect getGlobalbounds();
+        void karakteri_dondur(sf::Vector2i mouse_konum,sf::Vector2f konum_player);
+        void can_artir();
+        void hiz_artir();
+        void dmg_artir();
     private:
         int health;
         float speed;
         sf::RectangleShape sekil;
+        sf::Texture player_texture;
 };
 
 #endif // PLAYER_H

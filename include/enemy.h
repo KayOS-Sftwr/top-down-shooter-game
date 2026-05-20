@@ -14,13 +14,15 @@ class enemy
     void yazdir(sf::RenderWindow& pencere);
     int can_kac();
     int mermi_sil(sf::Vector2f mermi_konum);
+    int getposition_x();
+    int getposition_y();
     sf::Vector2f getPosition();
     void itil(sf::Vector2f itme_vektoru);
     sf::FloatRect getGlobalBounds();
     enemy& operator=(const enemy& ornek);
     private:
         int health=100;
-        float speed=5.0f;
+        float speed=3.0f;
         int damage=25;
         sf::RectangleShape enemy_sekil;
         sf::Texture enemy_texture;

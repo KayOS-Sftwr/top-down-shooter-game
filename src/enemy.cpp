@@ -3,7 +3,7 @@
 #include <math.h>
 enemy::enemy()
 {
-    enemy_sekil.setSize(sf::Vector2f(50.0f,50.0f));
+    enemy_sekil.setSize(sf::Vector2f(75.0f,75.0f));
     if (!enemy_texture.loadFromFile("zombie.png"))
     {printf("hata");
     }
@@ -101,6 +101,8 @@ enemy::enemy(const enemy& ornek)
     this->enemy_texture = ornek.enemy_texture;
     this->enemy_sekil = ornek.enemy_sekil;
     this->enemy_sekil.setTexture(&this->enemy_texture);
+    this->health = ornek.health;
+    this->damage=ornek.damage;
 }
 enemy& enemy::operator=(const enemy& ornek)
 {
@@ -110,6 +112,17 @@ enemy& enemy::operator=(const enemy& ornek)
         this->enemy_sekil = ornek.enemy_sekil;
         this->enemy_sekil.setTexture(&this->enemy_texture);
         this->health = ornek.health;
+         this->damage=ornek.damage;
     }
     return *this;
+}
+int enemy::getposition_x()
+{
+    sf::Vector2f konum=enemy_sekil.getPosition();
+    return konum.x;
+}
+int enemy::getposition_y()
+{
+    sf::Vector2f konum=enemy_sekil.getPosition();
+    return konum.y;
 }
