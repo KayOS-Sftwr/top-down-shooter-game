@@ -1,4 +1,4 @@
-# 🧟‍♂️ 2D Top-Down Zombie Survival Shooter
+#  2D Top-Down Survival Shooter
 
 This project is a top-down 2D survival arena shooter developed using C++ and SFML (Simple and Fast Multimedia Library). The player must survive endless waves of zombies, collect power-ups, and achieve the highest score possible.
 
