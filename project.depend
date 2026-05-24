@@ -444,7 +444,7 @@
 1779627267 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
-1779633057 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+1779633609 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
 	"player.h"
 	<SFML/Graphics.hpp>
 	<math.h>

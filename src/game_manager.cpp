@@ -35,6 +35,7 @@ void game_manager::run()
     int counter=1;
     oyun_bitti=false;
     oyun_basladi=false;
+    bool dmg_buff=false;
     while(pencere.isOpen()){
             if(oyun_basladi==false){
                   sf::Event olay;
@@ -135,6 +136,10 @@ void game_manager::run()
         player_konum.y=p1.getPosition_y()+5;
         mouse_position=sf::Mouse::getPosition(pencere);
         bullet yeni_mermi;
+        if(dmg_buff==true)
+        {
+            yeni_mermi.dmg_up();
+        }
         yeni_mermi.setPosition(player_konum);
         mermi_konum.x=yeni_mermi.getPosition_x();
         mermi_konum.y=yeni_mermi.getPosition_y();
@@ -249,6 +254,7 @@ void game_manager::run()
                                 {
                                     bullets[j].dmg_up();
                                 }
+                                dmg_buff=true;
                                 mola.restart();
                       damage.erase(damage.begin()+i);
                                 i--;
@@ -260,6 +266,7 @@ void game_manager::run()
                                 {
                                     bullets[j].dmg_down();
                                 }
+                                dmg_buff=false;
                                 mola.restart();
                             }
             // stack preventer
