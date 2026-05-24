@@ -25,4 +25,4 @@ This project includes a `Makefile` for easy compilation. Open your terminal in t
 
 1. **To compile the game:**
    ```bash
-   make
+   make or mingw32-make
