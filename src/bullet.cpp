@@ -58,6 +58,14 @@ int bullet::getPosition_y()
     sf::Vector2f konum=mermi_sekil.getPosition();
     return konum.y;
 }
+void bullet::dmg_up()
+{
+    damage=100;
+}
+void bullet::dmg_down()
+{
+    damage=50;
+}
 bullet::bullet(const bullet& ornek)
 {
     this->mermi_texture = ornek.mermi_texture;
