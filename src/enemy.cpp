@@ -12,11 +12,11 @@ enemy::enemy()
 }
 
 
-void enemy::mermi_carpti(sf::Vector2f mermi_konum)
+void enemy::mermi_carpti(sf::Vector2f mermi_konum, int hasar)
 {
     sf::FloatRect konum=enemy_sekil.getGlobalBounds();
     if (konum.contains(mermi_konum))
-      health=health-50;
+      health=health-hasar;
 }
 
 int enemy::oyuncu_carpti(sf::Vector2f player_konum)

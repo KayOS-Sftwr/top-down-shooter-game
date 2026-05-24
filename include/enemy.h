@@ -7,7 +7,7 @@ class enemy
     public:
         enemy();
         enemy(const enemy& ornek);
-    void mermi_carpti(sf::Vector2f mermi_konum);
+    void mermi_carpti(sf::Vector2f mermi_konum, int hasar);
     int oyuncu_carpti(sf::Vector2f player_konum);
     void hareket_et(sf::Vector2f player_konum);
     void setPosition();
