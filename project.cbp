@@ -45,11 +45,13 @@
 		<Unit filename="include/enemy.h" />
 		<Unit filename="include/game_manager.h" />
 		<Unit filename="include/player.h" />
+		<Unit filename="include/power_up.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/bullet.cpp" />
 		<Unit filename="src/enemy.cpp" />
 		<Unit filename="src/game_manager.cpp" />
 		<Unit filename="src/player.cpp" />
+		<Unit filename="src/power_up.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

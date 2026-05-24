@@ -1,7 +1,7 @@
 #include "player.h"
 #include <SFML/Graphics.hpp>
 #include <math.h>
-player::player(int hp, float spd) : health(hp), speed(spd){
+player::player(){
 
 sekil.setFillColor(sf::Color::White);
 if(!player_texture.loadFromFile("player.png"))
@@ -87,9 +87,25 @@ void player::karakteri_dondur(sf::Vector2i mouse_konum,sf::Vector2f konum_player
 }
 
 void player::can_artir()
-{ sf::Clock artirma;
-    while(artirma.getElapsedTime().asSeconds()<=10)
-   {
+{
     health=health+10;
-   }
+}
+void player::can_kontrol()
+{
+    if(health>100)
+    {
+        health=100;
+    }
+}
+void player::hiz_artir()
+{
+    speed=20.0f;
+}
+void player::hiz_azalt()
+{
+    speed=12.0f;
+}
+int player::can_dondur()
+{
+    return health;
 }

@@ -427,24 +427,24 @@
 
 1777654752 c:\users\kayra dönmez\desktop\programlama proje oyun\include\screen.h
 
-1779297439 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
+1779627538 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 	<time.h>
 	<stdlib.h>
 	<math.h>
 
-1779295077 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
+1779618890 c:\users\kayra dönmez\desktop\programlama proje oyun\include\game_manager.h
 	<SFML/Graphics.hpp>
 	"player.h"
 	"bullet.h"
 	"enemy.h"
 	"power_up.h"
 
-1779294857 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
+1779627267 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
-1779295752 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+1779627265 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
 	"player.h"
 	<SFML/Graphics.hpp>
 	<math.h>
@@ -464,9 +464,9 @@
 	<time.h>
 	<math.h>
 
-1779297409 c:\users\kayra dönmez\desktop\programlama proje oyun\include\power_up.h
+1779619127 c:\users\kayra dönmez\desktop\programlama proje oyun\include\power_up.h
 	<SFML/Graphics.hpp>
 
-1779296666 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\power_up.cpp
+1779621515 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\power_up.cpp
 	"power_up.h"
 

@@ -11,6 +11,8 @@ class power_up
         void dmg(sf::Vector2f dumsan_konum);
         int carpti_mi(sf::FloatRect player_konum);
         void yazdir(sf::RenderWindow& pencere);
+        power_up(const power_up& ornek);
+    power_up& operator=(const power_up& ornek);
     private:
     sf::CircleShape power_sekil;
     sf::Texture circle_texture;

@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <math.h>
-game_manager::game_manager() : p1(100,12.0f)
+game_manager::game_manager()
 {
 pencere.create(sf::VideoMode(1280,720),"Shooter Game");
 pencere.setFramerateLimit(60);
@@ -20,6 +20,8 @@ void game_manager::run()
     p1.can_sifirla();
     enemies.clear();
     bullets.clear();
+    can.clear();
+    hiz.clear();
     sf::Clock mola;
     int dalga_sayisi=0;
     int enemy_miktar=10;
@@ -189,12 +191,19 @@ void game_manager::run()
                         switch(random)
                         {
                         case 0:
+
                             power.can(dusman_konum);
-                            powers.push_back(power);
+                            can.push_back(power);
                             if(power.carpti_mi(p1.getGlobalbounds()))
                             {
                                 p1.can_artir();
                             }
+
+                        break;
+                        case 1:
+                            power.hiz(dusman_konum);
+                            hiz.push_back(power);
+                        break;
                         }
                         enemies.erase(enemies.begin()+i);
                         i--;
@@ -202,6 +211,29 @@ void game_manager::run()
                         break;
                     }
                 }
+            }
+
+            for(int i=0;i<can.size();i++)
+            {
+                        if(can[i].carpti_mi(p1.getGlobalbounds())){
+                                p1.can_artir();
+                                p1.can_kontrol();
+                      can.erase(can.begin()+i);
+                                i--;
+                        }
+            }
+             for(int i=0;i<hiz.size();i++)
+            {
+                        if(hiz[i].carpti_mi(p1.getGlobalbounds())){
+                                mola.restart();
+                                p1.hiz_artir();
+                      hiz.erase(hiz.begin()+i);
+                                i--;
+                        } if(mola.getElapsedTime().asSeconds()>10)
+                            {
+                                p1.hiz_azalt();
+                                mola.restart();
+                            }
             }
             // stack preventer
 for (int i = 0; i < enemies.size(); i++)
@@ -229,7 +261,7 @@ for (int i = 0; i < enemies.size(); i++)
                 player_konum.y=p1.getPosition_y();
                 if(enemies[i].oyuncu_carpti(player_konum))
                 {
-                    if(counter%180==0)
+                    if(counter%120==0)
                     p1.can_azalt();
                 }
               }
@@ -285,6 +317,14 @@ for (int i = 0; i < enemies.size(); i++)
         skori.setFillColor(sf::Color::Green);
         skori.setPosition(1000.0f, 0.0f);
             pencere.draw(skori);
+                  sf::Text hp;
+        skori.setFont(benim_fontum);
+        skori.setString("health:"+ std::to_string(p1.can_dondur()));
+        skori.setCharacterSize(25);
+        skori.setStyle(sf::Text::Regular);
+        skori.setFillColor(sf::Color::Green);
+        skori.setPosition(0.0f, 0.0f);
+            pencere.draw(skori);
            p1.draw(pencere);
        for(int i=0;i<bullets.size();i++)
         {
@@ -294,13 +334,17 @@ for (int i = 0; i < enemies.size(); i++)
         {
             enemies[i].yazdir(pencere);
         }
-        for(int i=0;i<powers.size();i++)
+        for(int i=0;i<can.size();i++)
         {
-            powers[i].yazdir(pencere);
+            can[i].yazdir(pencere);
+        }
+        for(int i=0;i<hiz.size();i++)
+        {
+            hiz[i].yazdir(pencere);
         }
          pencere.display();
         counter++;
-        if(counter>=300)
+        if(counter>=600)
         {
            counter=0;
         }

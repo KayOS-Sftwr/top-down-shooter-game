@@ -18,7 +18,10 @@ class game_manager
     player p1;
     vector<bullet> bullets;
     vector<enemy> enemies;
-    vector<power_up> powers;
+    vector<power_up> can;
+    vector<power_up> hiz;
+    vector<power_up> damage;
+
 };
 
 #endif // GAME_MANAGER_H

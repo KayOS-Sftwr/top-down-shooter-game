@@ -5,7 +5,7 @@
 class player
 {
     public:
-        player(int hp, float spd);
+        player();
         void draw(sf::RenderWindow& pencere);
         void changePosition_xright();
         void changePosition_xleft();
@@ -19,11 +19,14 @@ class player
         sf::FloatRect getGlobalbounds();
         void karakteri_dondur(sf::Vector2i mouse_konum,sf::Vector2f konum_player);
         void can_artir();
+        void can_kontrol();
+        int can_dondur();
         void hiz_artir();
+        void hiz_azalt();
         void dmg_artir();
     private:
-        int health;
-        float speed;
+        int health=100;
+        float speed=12.0f;
         sf::RectangleShape sekil;
         sf::Texture player_texture;
 };
