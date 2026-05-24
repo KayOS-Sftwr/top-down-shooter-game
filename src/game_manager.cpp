@@ -74,7 +74,7 @@ void game_manager::run()
                   //while window is open if user press to esc exits r to start
         while(pencere.pollEvent(olay))
         {
-            printf(".");
+
                   if (olay.type == sf::Event::KeyPressed) {
         if (olay.key.code == sf::Keyboard::R) {
            oyun_basladi=true;
