@@ -15,6 +15,8 @@ class game_manager
         bool oyun_basladi=false;
     private:
     sf::RenderWindow pencere;
+    sf::Texture harita_resmi;
+    sf::Sprite harita_sprite;
     player p1;
     vector<bullet> bullets;
     vector<enemy> enemies;

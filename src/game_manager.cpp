@@ -7,6 +7,9 @@ game_manager::game_manager()
 {
 pencere.create(sf::VideoMode(1280,720),"Shooter Game");
 pencere.setFramerateLimit(60);
+if (!harita_resmi.loadFromFile("map.png"))
+{}
+harita_sprite.setTexture(harita_resmi);
 }
 
 void game_manager::run()
@@ -324,6 +327,7 @@ for (int i = 0; i < enemies.size(); i++)
 
             //clear the previous info and draw new info and print to the screen
         pencere.clear(sf::Color::White);
+        pencere.draw(harita_sprite);
         if(enemies.size()==0 && counter%300!=0)
         {
                   sf::Font benim_fontum;
