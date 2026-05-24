@@ -120,7 +120,7 @@ void game_manager::run()
         while(pencere.pollEvent(olay))
             {
 
-                printf(".");
+
             if(olay.type==sf::Event::Closed)
             {
                 pencere.close();
@@ -437,7 +437,7 @@ for (int i = 0; i < enemies.size(); i++)
          sf::Event Olay;
         while(pencere.pollEvent(Olay))
         {
-            printf(".");
+
                 if (Olay.type == sf::Event::KeyPressed) {
         if (Olay.key.code == sf::Keyboard::B) {
             goto start;
