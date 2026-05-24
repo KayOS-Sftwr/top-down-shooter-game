@@ -116,6 +116,7 @@ void game_manager::run()
         {
             enemy dusman;
             dusman.setPosition();
+            dusman.wave_speed();
             enemies.push_back(dusman);
         }
     }

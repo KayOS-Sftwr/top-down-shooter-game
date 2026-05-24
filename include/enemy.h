@@ -12,6 +12,7 @@ class enemy
     void hareket_et(sf::Vector2f player_konum);
     void setPosition();
     void yazdir(sf::RenderWindow& pencere);
+    void wave_speed();
     int can_kac();
     int mermi_sil(sf::Vector2f mermi_konum);
     int getposition_x();

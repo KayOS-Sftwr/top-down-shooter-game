@@ -126,3 +126,8 @@ int enemy::getposition_y()
     sf::Vector2f konum=enemy_sekil.getPosition();
     return konum.y;
 }
+void enemy::wave_speed()
+{
+    speed=1.2*speed;
+}
+

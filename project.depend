@@ -444,7 +444,7 @@
 1779638972 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
-1779636900 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+1779638972 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
 	"player.h"
 	<SFML/Graphics.hpp>
 	<math.h>
@@ -456,7 +456,7 @@
 	"bullet.h"
 	<math.h>
 
-1779631200 c:\users\kayra dönmez\desktop\programlama proje oyun\include\enemy.h
+1779639347 c:\users\kayra dönmez\desktop\programlama proje oyun\include\enemy.h
 	<SFML/Graphics.hpp>
 
 1779631202 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\enemy.cpp
