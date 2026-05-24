@@ -427,7 +427,7 @@
 
 1777654752 c:\users\kayra dönmez\desktop\programlama proje oyun\include\screen.h
 
-1779627538 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
+1779632937 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 	<time.h>
@@ -444,22 +444,22 @@
 1779627267 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
-1779627265 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
+1779633057 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp
 	"player.h"
 	<SFML/Graphics.hpp>
 	<math.h>
 
-1779630266 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
+1779631432 c:\users\kayra dönmez\desktop\programlama proje oyun\include\bullet.h
 	<SFML/Graphics.hpp>
 
-1779630065 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\bullet.cpp
+1779631432 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\bullet.cpp
 	"bullet.h"
 	<math.h>
 
-1779295386 c:\users\kayra dönmez\desktop\programlama proje oyun\include\enemy.h
+1779631200 c:\users\kayra dönmez\desktop\programlama proje oyun\include\enemy.h
 	<SFML/Graphics.hpp>
 
-1779295487 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\enemy.cpp
+1779631202 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\enemy.cpp
 	"enemy.h"
 	<time.h>
 	<math.h>

@@ -22,7 +22,8 @@ void game_manager::run()
     bullets.clear();
     can.clear();
     hiz.clear();
-    sf::Clock mola;
+    sf::Clock mola1
+    ;sf::Clock mola;
     int dalga_sayisi=0;
     int enemy_miktar=10;
     sf::Vector2f mermi_konum;
@@ -230,16 +231,17 @@ void game_manager::run()
              for(int i=0;i<hiz.size();i++)
             {
                         if(hiz[i].carpti_mi(p1.getGlobalbounds())){
-                                mola.restart();
+                                mola1.restart();
                                 p1.hiz_artir();
                       hiz.erase(hiz.begin()+i);
                                 i--;
-                        } if(mola.getElapsedTime().asSeconds()>10)
+                        }
+            }
+            if(mola1.getElapsedTime().asSeconds()>10)
                             {
                                 p1.hiz_azalt();
-                                mola.restart();
+                                mola1.restart();
                             }
-            }
              for(int i=0;i<damage.size();i++)
             {
                         if(damage[i].carpti_mi(p1.getGlobalbounds())){
@@ -250,7 +252,9 @@ void game_manager::run()
                                 mola.restart();
                       damage.erase(damage.begin()+i);
                                 i--;
-                        } if(mola.getElapsedTime().asSeconds()>5)
+                        }
+            }
+            if(mola.getElapsedTime().asSeconds()>5)
                             {
                                for(int j=0;j<bullets.size();j++)
                                 {
@@ -258,7 +262,6 @@ void game_manager::run()
                                 }
                                 mola.restart();
                             }
-            }
             // stack preventer
 for (int i = 0; i < enemies.size(); i++)
 {
