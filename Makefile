@@ -1,3 +1,6 @@
+SFML_PATH = ./SFML
+
+
 #complier
 CXX = g++
 CXXFLAGS = -Wall -std=c++14 -O2
