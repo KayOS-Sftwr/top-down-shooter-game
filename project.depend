@@ -427,7 +427,7 @@
 
 1777654752 c:\users\kayra dönmez\desktop\programlama proje oyun\include\screen.h
 
-1779632937 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
+1779636829 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\game_manager.cpp
 	"game_manager.h"
 	<SFML/Graphics.hpp>
 	<time.h>
@@ -441,7 +441,7 @@
 	"enemy.h"
 	"power_up.h"
 
-1779627267 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
+1779636837 c:\users\kayra dönmez\desktop\programlama proje oyun\include\player.h
 	<SFML/Graphics.hpp>
 
 1779633609 source:c:\users\kayra dönmez\desktop\programlama proje oyun\src\player.cpp

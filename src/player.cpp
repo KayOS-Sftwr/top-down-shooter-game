@@ -109,3 +109,19 @@ int player::can_dondur()
 {
     return health;
 }
+void player::can_cizim(player p1,sf::RenderWindow& pencere)
+{
+
+sf::RectangleShape arka_bar(sf::Vector2f(200.0f, 20.0f));
+arka_bar.setFillColor(sf::Color(50, 50, 50));
+
+sf::RectangleShape on_bar(sf::Vector2f(200.0f * (p1.can_dondur() / 100.0f), 20.0f));
+on_bar.setFillColor(sf::Color::Red);
+
+
+arka_bar.setPosition(0.0f, 40.0f);
+on_bar.setPosition(00.0f, 40.0f);
+
+pencere.draw(arka_bar);
+pencere.draw(on_bar);
+}

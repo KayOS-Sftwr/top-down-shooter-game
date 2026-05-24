@@ -359,6 +359,7 @@ for (int i = 0; i < enemies.size(); i++)
         skori.setFillColor(sf::Color::Green);
         skori.setPosition(0.0f, 0.0f);
             pencere.draw(skori);
+            p1.can_cizim(p1,pencere);
            p1.draw(pencere);
        for(int i=0;i<bullets.size();i++)
         {

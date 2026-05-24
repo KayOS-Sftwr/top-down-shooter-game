@@ -24,6 +24,7 @@ class player
         void hiz_artir();
         void hiz_azalt();
         void dmg_artir();
+        void can_cizim(player p1,sf::RenderWindow& pencere);
     private:
         int health=100;
         float speed=12.0f;
