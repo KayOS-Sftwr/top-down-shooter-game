@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <math.h>
+#include <SFML/Audio.hpp>
 game_manager::game_manager()
 {
 pencere.create(sf::VideoMode(1280,720),"Shooter Game");
@@ -10,6 +11,32 @@ pencere.setFramerateLimit(60);
 if (!harita_resmi.loadFromFile("map.png"))
 {}
 harita_sprite.setTexture(harita_resmi);
+if (mainmenu.openFromFile("assets/mainmusic.mp3"))
+    {
+        mainmenu.setLoop(true);
+        mainmenu.setVolume(30.f);
+    }
+    if (background.openFromFile("assets/background.mp3"))
+    {
+        background.setLoop(true);
+        background.setVolume(30.f);
+    }
+
+
+    if (shoot_buffer.loadFromFile("assets/shoot.mp3"))
+    {
+        shoot.setBuffer(shoot_buffer);
+        shoot.setVolume(50.f);
+    }
+
+
+    if (power_buffer.loadFromFile("assets/powerup.mp3"))
+    {
+        power_sesi.setBuffer(power_buffer);
+        power_sesi.setVolume(70.f);
+    }
+
+
 }
 
 void game_manager::run()
@@ -29,7 +56,7 @@ void game_manager::run()
     sf::Clock mola1//for the power up timings
     ;sf::Clock mola;
     int dalga_sayisi=0;//wave counter
-    int enemy_miktar=10;//starting value of enemies
+    int enemy_miktar=5;//starting value of enemies
     sf::Vector2f mermi_konum;//bullet position
     sf::Vector2f player_konum;//player position
     sf::Vector2i mouse_position;
@@ -42,6 +69,7 @@ void game_manager::run()
     bool dmg_buff=false;
     while(pencere.isOpen()){
             if(oyun_basladi==false){
+                mainmenu.play();
                   sf::Event olay;
                   //while window is open if user press to esc exits r to start
         while(pencere.pollEvent(olay))
@@ -149,6 +177,7 @@ void game_manager::run()
         yeni_mermi.move_mermi(mouse_position,player_konum);
         yeni_mermi.buraya_bak(mouse_position,mermi_konum);
         bullets.push_back(yeni_mermi);
+        shoot.play();
         }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -207,6 +236,7 @@ void game_manager::run()
                             if(power.carpti_mi(p1.getGlobalbounds()))
                             {
                                 p1.can_artir();
+                                power_sesi.play();
                             }
 
                         break;
@@ -235,6 +265,7 @@ void game_manager::run()
                         if(can[i].carpti_mi(p1.getGlobalbounds())){
                                 p1.can_artir();
                                 p1.can_kontrol();
+                                power_sesi.play();
                       can.erase(can.begin()+i);
                                 i--;
                         }
@@ -244,6 +275,7 @@ void game_manager::run()
                         if(hiz[i].carpti_mi(p1.getGlobalbounds())){
                                 mola1.restart();
                                 p1.hiz_artir();
+                                power_sesi.play();
                       hiz.erase(hiz.begin()+i);
                                 i--;
                         }
@@ -256,6 +288,7 @@ void game_manager::run()
              for(int i=0;i<damage.size();i++)
             {
                         if(damage[i].carpti_mi(p1.getGlobalbounds())){
+                                power_sesi.play();
                                 for(int j=0;j<bullets.size();j++)
                                 {
                                     bullets[j].dmg_up();
