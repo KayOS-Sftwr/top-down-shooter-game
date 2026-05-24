@@ -11,6 +11,9 @@ class bullet
         void move_mermi(sf::Vector2i mouse_konum, sf::Vector2f player_konum);
         void mermi_hareket();
         void buraya_bak(sf::Vector2i mouse_konum,sf::Vector2f mermi_konum);
+        void dmg_up();
+        void dmg_down();
+        int dmg_dondur();
         int ekrandanciktimi();
         int temizle();
         int getPosition_x();

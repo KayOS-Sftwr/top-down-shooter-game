@@ -66,6 +66,10 @@ void bullet::dmg_down()
 {
     damage=50;
 }
+int bullet::dmg_dondur()
+{
+    return damage;
+}
 bullet::bullet(const bullet& ornek)
 {
     this->mermi_texture = ornek.mermi_texture;
