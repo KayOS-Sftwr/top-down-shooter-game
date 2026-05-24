@@ -1,0 +1,13 @@
+# IDE and Editor files
+*.cbp
+*.layout
+*.depend
+.vscode/
+
+# Compiled object files
+*.o
+
+# Executable files
+*.exe
+bin/
+obj/
