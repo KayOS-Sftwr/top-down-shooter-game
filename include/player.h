@@ -27,7 +27,7 @@ class player
         void can_cizim(player p1,sf::RenderWindow& pencere);
     private:
         int health=100;
-        float speed=12.0f;
+        float speed=8.0f;
         sf::RectangleShape sekil;
         sf::Texture player_texture;
 };

@@ -99,11 +99,11 @@ void player::can_kontrol()
 }
 void player::hiz_artir()
 {
-    speed=20.0f;
+    speed=15.0f;
 }
 void player::hiz_azalt()
 {
-    speed=12.0f;
+    speed=8.0f;
 }
 int player::can_dondur()
 {
