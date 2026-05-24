@@ -21,8 +21,12 @@ To build and run this project, the following tools and libraries are required:
 * **SFML 2.5+** (Graphics, Window, System, and Audio modules)
 
 ## 🚀 Build Instructions
-This project includes a `Makefile` for easy compilation. Open your terminal in the project directory and follow these steps:
+This project includes a `Makefile` for easy compilation no IDE required. Open your terminal in the project directory and follow these steps:
 
 1. **To compile the game:**
    ```bash
    make or mingw32-make
+    ```
+   2.Once build is succsesfull enter
+    ```bash
+    ./project.exe
