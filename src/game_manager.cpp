@@ -176,7 +176,7 @@ void game_manager::run()
                 {
                     mermi_konum.x=bullets[j].getPosition_x();
                     mermi_konum.y=bullets[j].getPosition_y();
-                    enemies[i].mermi_carpti(mermi_konum);
+                    enemies[i].mermi_carpti(mermi_konum,bullets[j].dmg_dondur());
                     if(enemies[i].mermi_sil(mermi_konum))
                     {
                         bullets.erase(bullets.begin() + j);
@@ -204,11 +204,16 @@ void game_manager::run()
                             power.hiz(dusman_konum);
                             hiz.push_back(power);
                         break;
+                        case 3:
+                            power.dmg(dusman_konum);
+                            damage.push_back(power);
+                            break;
                         }
                         enemies.erase(enemies.begin()+i);
                         i--;
                         skor+=120;
                         break;
+
                     }
                 }
             }
@@ -232,6 +237,25 @@ void game_manager::run()
                         } if(mola.getElapsedTime().asSeconds()>10)
                             {
                                 p1.hiz_azalt();
+                                mola.restart();
+                            }
+            }
+             for(int i=0;i<damage.size();i++)
+            {
+                        if(damage[i].carpti_mi(p1.getGlobalbounds())){
+                                for(int j=0;j<bullets.size();j++)
+                                {
+                                    bullets[j].dmg_up();
+                                }
+                                mola.restart();
+                      damage.erase(damage.begin()+i);
+                                i--;
+                        } if(mola.getElapsedTime().asSeconds()>5)
+                            {
+                               for(int j=0;j<bullets.size();j++)
+                                {
+                                    bullets[j].dmg_down();
+                                }
                                 mola.restart();
                             }
             }
@@ -341,6 +365,10 @@ for (int i = 0; i < enemies.size(); i++)
         for(int i=0;i<hiz.size();i++)
         {
             hiz[i].yazdir(pencere);
+        }
+        for(int i=0;i<damage.size();i++)
+        {
+            damage[i].yazdir(pencere);
         }
          pencere.display();
         counter++;
