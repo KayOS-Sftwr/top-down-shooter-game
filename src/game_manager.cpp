@@ -334,7 +334,7 @@ for (int i = 0; i < enemies.size(); i++)
                 player_konum.y=p1.getPosition_y();
                 if(enemies[i].oyuncu_carpti(player_konum))
                 {
-                    if(counter%120==0)
+                    if(counter%100==0)
                     p1.can_azalt();
                 }
               }
