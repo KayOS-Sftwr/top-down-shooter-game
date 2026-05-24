@@ -17,31 +17,33 @@ void game_manager::run()
     srand(time(NULL));
     //added necessery variable
     start:
-    sf::Vector2f dusman_konum;
-    int random=10;
-    int skor=0;
-    p1.can_sifirla();
-    enemies.clear();
-    bullets.clear();
-    can.clear();
+    sf::Vector2f dusman_konum;//enemy position
+    int random=10;//random for orb drop rate initialized with starting value for prevent to garbage value
+    int skor=0;//score
+    p1.can_sifirla();//when game will be restarted players health will be 100 again
+    enemies.clear();//when game will be restarted remaining enemies will be cleared from screen
+    bullets.clear();//when game will be restarted remaining bullets will be cleared from screen
+    can.clear();//clears orbs
     hiz.clear();
-    sf::Clock mola1
+    damage.clear();
+    sf::Clock mola1//for the power up timings
     ;sf::Clock mola;
-    int dalga_sayisi=0;
-    int enemy_miktar=10;
-    sf::Vector2f mermi_konum;
-    sf::Vector2f player_konum;
+    int dalga_sayisi=0;//wave counter
+    int enemy_miktar=10;//starting value of enemies
+    sf::Vector2f mermi_konum;//bullet position
+    sf::Vector2f player_konum;//player position
     sf::Vector2i mouse_position;
     sf::Vector2f player_konum_initial;
     player_konum_initial.x=p1.getPosition_x();
     player_konum_initial.y=p1.getPosition_y();
-    int counter=1;
-    oyun_bitti=false;
-    oyun_basladi=false;
+    int counter=1;//for the calculations of the loop
+    oyun_bitti=false;//game ends
+    oyun_basladi=false;//game starts
     bool dmg_buff=false;
     while(pencere.isOpen()){
             if(oyun_basladi==false){
                   sf::Event olay;
+                  //while window is open if user press to esc exits r to start
         while(pencere.pollEvent(olay))
         {
             printf(".");
@@ -121,10 +123,7 @@ void game_manager::run()
         }
     }
 }
-//        for(int i=0;i<enemies.size();i++)
-//        {
-//            enemies[i].getPosition()
-//        }
+
         //enemies will move to the player constantly
         for(int i=0;i<enemies.size();i++)
         {
@@ -196,7 +195,8 @@ void game_manager::run()
                     {
                         dusman_konum.x=enemies[i].getposition_x();
                         dusman_konum.y=enemies[i].getposition_y();
-                         random=rand()%10;
+                        //its like rolling a dice if conditions met enemy drops a power up orb
+                         random=rand()%20;
                          power_up power;
                         switch(random)
                         {
@@ -218,6 +218,8 @@ void game_manager::run()
                             power.dmg(dusman_konum);
                             damage.push_back(power);
                             break;
+                        default:
+                            break;
                         }
                         enemies.erase(enemies.begin()+i);
                         i--;
@@ -227,7 +229,7 @@ void game_manager::run()
                     }
                 }
             }
-
+            //conrtols if orbs contacts with player and starts to working
             for(int i=0;i<can.size();i++)
             {
                         if(can[i].carpti_mi(p1.getGlobalbounds())){
