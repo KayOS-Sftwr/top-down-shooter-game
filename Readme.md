@@ -1,4 +1,4 @@
-# 🧟‍♂️ 2D Top-Down Zombie Survival Shooter
+#  2D Top-Down Survival Shooter
 
 This project is a top-down 2D survival arena shooter developed using C++ and SFML (Simple and Fast Multimedia Library). The player must survive endless waves of zombies, collect power-ups, and achieve the highest score possible.
 
@@ -27,7 +27,6 @@ This project includes a `Makefile` for easy compilation no IDE required. Open yo
    ```bash
    make or mingw32-make
     ```
-2. **To launch the game enter this to terminal**
- ```bash
- ./project.exe
-  ```
+   2.Once build is succsesfull enter
+    ```bash
+    ./project.exe
